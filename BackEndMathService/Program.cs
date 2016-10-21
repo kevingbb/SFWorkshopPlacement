@@ -45,15 +45,18 @@ namespace BackEndMathService
 
             protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
             {
+                // Use this configuration to have a single listener, the default is
+                // just for Web API.
+                // TODO: Use this config or the one below.
                 //return new[] { new ServiceInstanceListener(_ => this) };
-                //return new[] { new ServiceInstanceListener(context => new FabricTransportServiceRemotingListener(context, this)) };
-                //return new[] { new ServiceInstanceListener(context => new ServiceRemotingListener<IMath>(context, this)) };
 
-                return new[] { new ServiceInstanceListener(context => new FabricTransportServiceRemotingListener(context, this, new FabricTransportListenerSettings()
+                // Use this configuration to have two listeners, one for Web API and
+                // one for Remoting.
+                return new[] { new ServiceInstanceListener(_ => this, "API"),
+                               new ServiceInstanceListener(context => new FabricTransportServiceRemotingListener(context, this, new FabricTransportListenerSettings()
                                     {
-                                        EndpointResourceName = "ServiceEndpoint"
-                                    }), "REMOTING"),
-                               new ServiceInstanceListener(_ => this, "API")
+                                        EndpointResourceName = "ServiceEndpoint2"
+                                    }), "REMOTING")
                 };
             }
 
@@ -77,7 +80,7 @@ namespace BackEndMathService
             {
                 // Make sure to use the second endpoint as that is the one for the web host,
                 // the first endpoint is a remoting endpoint.
-                var endpoint = FabricRuntime.GetActivationContext().GetEndpoint("ServiceEndpoint2");
+                var endpoint = FabricRuntime.GetActivationContext().GetEndpoint(_endpointName);
 
                 string serverUrl = $"{endpoint.Protocol}://{FabricRuntime.GetNodeContext().IPAddressOrFQDN}:{endpoint.Port}";
 
