@@ -5,10 +5,12 @@ There is a frontend stateless service and a backend stateless service and they a
 
 The top part of the web page is straight forward and simply doubles the number that is passed in. This flow is leveraging Remoting and the Service Fabric Naming Service (used for service discovery) to access the backend stateless service.
 
-The bottom part of the web page is the more traditional way of accessing services on different systems. The number to be doubled textbox is straight forward. The other text box was added so the user can dynamically play with the URIs to test Web API directly or through Reverse Proxy. If you are not familiar with Reverse Proxy, click [here](https://azure.microsoft.com/en-us/documentation/articles/service-fabric-reverseproxy/) for more details.
+The bottom part of the web page is the more traditional way of accessing services on different systems. The number to be doubled textbox is straight forward. The other text box was added so the user can dynamically play with the URIs to test connectivity to the backend Web API directly or through Reverse Proxy. If you are not familiar with Reverse Proxy, click [here](https://azure.microsoft.com/en-us/documentation/articles/service-fabric-reverseproxy/) for more details.
 
 API Examples:
 
-Navigate to frontend node (eg. http://<SF Cluster Name>:1603/) will bring you to the default web page.
+Navigate to frontend node (eg. http://<SF Cluster Name>:1603/) will bring you to the default web page that you can use for testing.
 
-If you have the backend node exposed externally for testing purposes and Reverse Proxy configured then navigating to the following will call the API directly (eg. http://<SF Cluster Name>:19008/SFWorkshopPlacement/BackEndMathService/api/doubles/6)
+If you have the backend node exposed externally for testing purposes and Reverse Proxy configured then navigating to something like the following will call the API directly (eg. http://<SF Cluster Name>:19008/SFWorkshopPlacement/BackEndMathService/api/doubles/6) to test it out. You will notice that the Reverse Proxy call is using http://localhost which might seem strange until you think about it. Reverse Proxy runs on every node in the cluster which makes it handy to use when needing to resolve the Service Location.
+
+Which method, direct to Web API or Reverse Proxy to Web API or Remoting, do you find easier? Why? I will let you be the judge of that.
