@@ -6,7 +6,6 @@
     <AssemblyName>FrontEndWebServer</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>FrontEndWebServer</PackageId>
-    <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
   </PropertyGroup>
 
   <ItemGroup>

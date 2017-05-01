@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "exports": {
+    "SharedLibrary/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5.2",
+      "compile": {
+        "bin/x64/Debug/SharedLibrary.dll": {}
+      },
+      "runtime": {
+        "../packages/Microsoft.ServiceFabric.5.2.207/lib/net45/Microsoft.ServiceFabric.Internal.Strings.dll": {},
+        "../packages/Microsoft.ServiceFabric.5.2.207/lib/net45/Microsoft.ServiceFabric.Internal.dll": {},
+        "../packages/Microsoft.ServiceFabric.5.2.207/lib/net45/System.Fabric.Strings.dll": {},
+        "../packages/Microsoft.ServiceFabric.5.2.207/lib/net45/System.Fabric.dll": {},
+        "../packages/Microsoft.ServiceFabric.Data.2.2.207/lib/net45/Microsoft.ServiceFabric.Data.Interfaces.dll": {},
+        "../packages/Microsoft.ServiceFabric.Data.2.2.207/lib/net45/Microsoft.ServiceFabric.Data.dll": {},
+        "../packages/Microsoft.ServiceFabric.Services.2.2.207/lib/net45/Microsoft.ServiceFabric.Services.dll": {},
+        "../packages/Microsoft.ServiceFabric.Services.2.2.207/lib/net45/ServiceFabricServiceModel.dll": {},
+        "bin/x64/Debug/SharedLibrary.dll": {}
+      },
+      "contentFiles": {
+        "bin/x64/Debug/SharedLibrary.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}
